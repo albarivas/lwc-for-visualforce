@@ -1,0 +1,57 @@
+<apex:page >
+    <apex:includeLightning/>
+    <div id="example-container">
+      <h1>VISUALFORCE</h1>
+      <apex:form>
+        <apex:commandButton onclick="callLWCMethod();" 
+                            onComplete="return null;" 
+                            value="Press me and call a LWC method!">
+        </apex:commandButton>
+        <apex:commandButton onclick="setLWCProperty();" 
+                            onComplete="return null;" 
+                            value="Press me and set a LWC property!">
+        </apex:commandButton>
+      </apex:form>
+      <p>0 messages listened from LWC</p>
+      <div id="lwc-container"></div>
+    </div>
+    <script>
+      var timesListened = 1;
+
+      $Lightning.use("c:LWCContainerApp", function() {
+        $Lightning.createComponent("c:myLightningWebComponent",
+          { label : "Press me and send an event up!" },
+          "lwc-container",
+          function(cmp) {
+             console.log('LWC added to Visualforce page:'+ cmp);
+             var lwc = document.querySelector('c-my-lightning-web-component');
+             lwc.addEventListener('buttonclicked', handleLWCEvent);
+          }
+        );
+      });
+
+      function handleLWCEvent() {
+        document.querySelector('p').textContent = timesListened + ' messages listened from LWC';
+        timesListened++;
+      }
+
+      function callLWCMethod(event) {
+        var lwc = document.querySelector('c-my-lightning-web-component');
+        lwc.doWhatever();
+      }
+
+      function setLWCProperty(event) {
+        var lwc = document.querySelector('c-my-lightning-web-component');
+        lwc.label = 'Label changed!';
+      }
+    </script>
+    <style>
+      #example-container {
+        border: 1px solid black;
+        padding: 10px;
+      }
+      form {
+        margin-top: 10px;
+      }
+    </style>
+</apex:page>
