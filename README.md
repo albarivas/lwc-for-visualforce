@@ -18,6 +18,6 @@ Examples of how to use Lightning Web Components inside Visualforce pages
 
 `sfdx force:user:permset:assign -n lwc_for_visualforce`
 
-1. Open the scratch org:
+6. Open the scratch org:
 
 `sfdx force:org:open`
