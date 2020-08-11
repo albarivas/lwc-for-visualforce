@@ -3,14 +3,15 @@
     <div id="example-container">
       <h1>VISUALFORCE</h1>
       <apex:form>
+        <apex:commandButton onclick="setLWCProperty();" 
+                            onComplete="return null;" 
+                            value="Press me and set a LWC property!">
+        </apex:commandButton>  
         <apex:commandButton onclick="callLWCMethod();" 
                             onComplete="return null;" 
                             value="Press me and call a LWC method!">
         </apex:commandButton>
-        <apex:commandButton onclick="setLWCProperty();" 
-                            onComplete="return null;" 
-                            value="Press me and set a LWC property!">
-        </apex:commandButton>
+        
       </apex:form>
       <p>0 messages listened from LWC</p>
       <div id="lwc-container"></div>
@@ -20,7 +21,7 @@
 
       $Lightning.use("c:LWCContainerApp", function() {
         $Lightning.createComponent("c:myLightningWebComponent",
-          { label : "Press me and send an event up!" },
+          { label : "Initial label value" },
           "lwc-container",
           function(cmp) {
              console.log('LWC added to Visualforce page:'+ cmp);
@@ -42,7 +43,7 @@
 
       function setLWCProperty(event) {
         var lwc = document.querySelector('c-my-lightning-web-component');
-        lwc.label = 'Label changed!';
+        lwc.label = 'Press me and send an event up!';
       }
     </script>
     <style>
