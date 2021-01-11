@@ -20,8 +20,8 @@
     "@salesforce/eslint-config-lwc": "^0.8.0",
     "@salesforce/eslint-plugin-aura": "^1.4.0",
     "@salesforce/sfdx-lwc-jest": "^0.10.2",
-    "eslint": "^7.14.0",
-    "eslint-config-prettier": "^6.15.0",
+    "eslint": "^7.16.0",
+    "eslint-config-prettier": "^7.1.0",
     "prettier": "^2.2.1",
     "prettier-plugin-apex": "^1.7.0"
   }
